@@ -20,7 +20,7 @@ contract PlanetEarth {
     mapping(string => string) private countryCapitals;
     mapping(string => bool) private specifiedCapitals;
 
-    Country[] europeanCountries;
+    Country[] public europeanCountries;
 
     event EuropeanCountryAdded(string name, uint256 population);
     event CapitalAdded(string countryName, string capitalName);
@@ -46,7 +46,7 @@ contract PlanetEarth {
     }
 
     function removeCapital(string _countryName) public {
-        string removedCapitalName = countryCapitals[_countryName];
+        string memory removedCapitalName = countryCapitals[_countryName];
 
         delete countryCapitals[_countryName];
         specifiedCapitals[_countryName] = false;
