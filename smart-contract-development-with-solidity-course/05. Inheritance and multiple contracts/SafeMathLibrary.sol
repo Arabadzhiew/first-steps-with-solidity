@@ -4,17 +4,13 @@ library SafeMath {
     function add(uint256 numberOne, uint256 numberTwo) pure public returns(uint256 result) {
         result = numberOne + numberTwo;
 
-        if(result < numberOne || result < numberTwo) {
-            revert();
-        }
+        assert(result >= numberOne || result >= numberTwo);
     }
 
     function subtract(uint256 numberOne, uint256 numberTwo) pure public returns(uint256 result) {
         result = numberOne - numberTwo;
 
-        if(result > numberOne) {
-            revert();
-        }
+        assert(result <= numberOne);
     }
 
     function multiply(uint256 numberOne, uint256 numberTwo) pure public returns(uint256 result) {
@@ -24,9 +20,21 @@ library SafeMath {
 
         result = numberOne * numberTwo;
 
-        if(result < numberOne || result < numberTwo) {
-            revert();
+        assert(result >= numberOne || result >= numberTwo);
+    }
+
+    function divide(uint256 dividend, uint256 divisor) pure public returns(uint256 result) {
+        if(dividend == 0) {
+            return 0;
         }
+
+        if(divisor == 0) {
+            assert(false);
+        }
+
+        result = dividend / divisor;
+
+        assert(result <= dividend);
     }
 }
 
