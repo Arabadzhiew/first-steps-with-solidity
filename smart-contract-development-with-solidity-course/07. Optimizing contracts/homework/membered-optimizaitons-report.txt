@@ -1,0 +1,15 @@
+Gas prices before: 
+    addMember - 219_612;
+    donate - 79_650;
+
+Gas prices after:
+    addMember - 49_103
+    donate - 24_677;
+
+0. Resolve all of the warnings (use 'constructor' syntax for constructors, add emit keyword when emiting events);
+1. Delete MemberContr - insted just use the Member struct;
+2. Remove MemberContr add method;
+3. Remove tmp state variables - they are no longer used after removing the add method;
+4. Remove members list - unused state variable;
+5. Optimize onlyMember modifier - we can just check whether the msg.sender is part of our members mapping;
+6. Use the Member struct where the MemberContr was previously used;
